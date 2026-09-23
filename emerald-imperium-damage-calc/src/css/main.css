@@ -533,3 +533,6 @@ table.field {
 body > .wrapper { padding-top: 1.2em; }
 .levelCapSelection { display: inline-block; position: relative; top: -8px; margin-left: 2em; }
 .levelCapSelection input { text-align: center; }
+.easyModeSelection { display: inline-block; position: relative; top: -8px; margin: 0 1.5em; }
+.easyModeSelection label.btn { white-space: nowrap; width: auto; padding: 0 0.8em; }
+.easyModeSelection input:checked + label.btn { background: #3c8a5a; border-color: #2f6e48; color: #fff; }

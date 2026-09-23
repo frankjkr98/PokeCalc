@@ -585,6 +585,12 @@ $(document).on("change input", "#highestLevel", function () {
 	});
 });
 
+$(document).on("change", "#easyMode", function () {
+	$(".set-selector").each(function () {
+		if ($(this).val()) $(this).change();
+	});
+});
+
 $(".set-selector").change(function () {
 	var fullSetName = $(this).val();
 	var pokemonName = fullSetName.substring(0, fullSetName.indexOf(" ("));
@@ -659,8 +665,10 @@ $(".set-selector").change(function () {
 			var setLevel = set.level === undefined ? 100 : set.level;
 			if (set.levelOffset !== undefined) {
 				var hl = parseInt($("#highestLevel").val(), 10);
-				if (hl > 0) setLevel = Math.max(1, Math.min(100, hl + set.levelOffset));
+				if (hl > 0) setLevel = hl + set.levelOffset;
 			}
+			if ($("#easyMode").prop("checked")) setLevel -= 2;
+			setLevel = Math.max(1, Math.min(100, setLevel));
 			pokeObj.find(".level").val(setLevel);
 			if (set.doubles && !$("#doubles-format").prop("disabled")) {
 				$("#doubles-format").prop("checked", true).change();
